@@ -46,6 +46,7 @@ public class NappaimistonKuuntelija implements KeyListener {
             yl.kunPainetaanOK();
         }
         if (painetaankoNappia(nk.getLyhytSyotto(), KeyEvent.VK_1, e)) {
+            System.out.println("Changg");
             pl.lyhytSyotto();
         }
         if (painetaankoNappia(nk.getPitkaSyotto(),KeyEvent.VK_2,e)) {

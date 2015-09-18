@@ -2,22 +2,19 @@
 import Logiikka.ApuLuokat.Nappi;
 import Logiikka.ApuLuokat.Tuomari;
 import Logiikka.ApuLuokat.PalloRalli;
-import Logiikka.ApuLuokat.Pelaaja;
-import Logiikka.Logiikka;
 import Logiikka.kasittelijat.LyontienKasittelija;
 import Logiikka.kasittelijat.NappienKasittelija;
 import Logiikka.TekoalynLogiikka;
 import Logiikka.PelaajanLogiikka;
 import Logiikka.YhteisLogiikka;
 import java.awt.Container;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 /*
@@ -58,7 +55,6 @@ public class Kayttoliittyma implements Runnable {
         for (Nappi nappi : nk.getNapit()) {
             nappi.getButton().addActionListener(kuuntelija);
             nappi.getButton().addKeyListener(nappaimisto);
-            nappi.getButton().setFocusable(true);
             ala.add(nappi.getButton());
         }
        
@@ -91,11 +87,13 @@ public class Kayttoliittyma implements Runnable {
 
     @Override
     public void run() {
-        this.frame = new JFrame("Pingis-simulaattori");
+        this.frame = new JFrame(("Pingis-simulaattori"));
         frame.setPreferredSize(new Dimension(700, 700));
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         luoAloitusNaytto(frame.getContentPane());
         frame.pack();
+       
+        frame.setAlwaysOnTop(true);
         frame.setVisible(true);
         
     }

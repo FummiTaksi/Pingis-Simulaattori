@@ -7,3 +7,4 @@
 6.9 Bugien korjailua 1h
 9.9 Lisätty toiminnallisuus : Lyöntejä voi lyödä nappia painamalla. Ei toimi täydellisesti. 2h
 10.9 Testien tekoa ja bugien korjailua. 2h
+15.9 Debuggauksen suunnittelua. 

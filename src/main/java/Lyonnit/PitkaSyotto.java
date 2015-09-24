@@ -12,7 +12,6 @@ import java.util.ArrayList;
  * @author Aleksi
  */
 public class PitkaSyotto implements Lyonti {
-
     @Override
     public double getTodNak() {
         return 0.90;

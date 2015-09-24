@@ -1,6 +1,7 @@
 package Logiikka.kasittelijat;
 
 
+
 import Logiikka.ApuLuokat.Nappi;
 import Lyonnit.Alakierre;
 import Lyonnit.Blokki;
@@ -39,12 +40,11 @@ public class NappienKasittelija {
     
     public void lisaaKaikkiNapitListaan() {
         napit.add(new Nappi (new JButton("[ENTER] OK"),null));
-        lisaaNappiListaan(new LyhytSyotto());
-        lisaaNappiListaan(new PitkaSyotto());
-        lisaaNappiListaan(new Alakierre());
-        lisaaNappiListaan(new Deffu());
-        lisaaNappiListaan(new Blokki());
-        lisaaNappiListaan(new Spinni()); 
+        LyontienKasittelija vali = new LyontienKasittelija();
+        vali.lisaaKaikkiLyonnitListaan();
+        for (Lyonti lyonti : vali.getLyonnit()) {
+            lisaaNappiListaan(lyonti);
+        }
         
     }
     public Nappi getOK() {

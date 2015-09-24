@@ -1,22 +1,18 @@
-package Lyonnit;
-
-
-import Lyonnit.Lyonti;
-import java.util.ArrayList;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Lyonnit;
+
+import java.util.ArrayList;
 
 /**
  *
  * @author Aleksi
  */
 public class Alakierre implements Lyonti{
-
-    private double todnak;
+        private double todnak;
     
     public Alakierre(double todnak) {
         this.todnak = todnak;
@@ -56,7 +52,4 @@ public class Alakierre implements Lyonti{
         }
         return true;
     }
-
-   
-    
 }

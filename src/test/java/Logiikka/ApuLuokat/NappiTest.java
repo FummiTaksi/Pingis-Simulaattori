@@ -42,58 +42,58 @@ public class NappiTest {
     /**
      * Test of getButton method, of class Nappi.
      */
-    @Test
-    public void testGetButton() {
-        System.out.println("getButton");
-        Nappi instance = null;
-        JButton expResult = null;
-        JButton result = instance.getButton();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getLyonti method, of class Nappi.
-     */
-    @Test
-    public void testGetLyonti() {
-        System.out.println("getLyonti");
-        Nappi instance = null;
-        Lyonti expResult = null;
-        Lyonti result = instance.getLyonti();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toString method, of class Nappi.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Nappi instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of equals method, of class Nappi.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        Nappi instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testGetButton() {
+//        System.out.println("getButton");
+//        Nappi instance = null;
+//        JButton expResult = null;
+//        JButton result = instance.getButton();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getLyonti method, of class Nappi.
+//     */
+//    @Test
+//    public void testGetLyonti() {
+//        System.out.println("getLyonti");
+//        Nappi instance = null;
+//        Lyonti expResult = null;
+//        Lyonti result = instance.getLyonti();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of toString method, of class Nappi.
+//     */
+//    @Test
+//    public void testToString() {
+//        System.out.println("toString");
+//        Nappi instance = null;
+//        String expResult = "";
+//        String result = instance.toString();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of equals method, of class Nappi.
+//     */
+//    @Test
+//    public void testEquals() {
+//        System.out.println("equals");
+//        Object o = null;
+//        Nappi instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.equals(o);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
 }

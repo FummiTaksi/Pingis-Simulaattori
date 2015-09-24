@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class LyhytSyottoTest {
-    
+    private LyhytSyotto lyhyt;
     public LyhytSyottoTest() {
     }
     
@@ -32,6 +32,7 @@ public class LyhytSyottoTest {
     
     @Before
     public void setUp() {
+        this.lyhyt = new LyhytSyotto();
     }
     
     @After
@@ -43,56 +44,46 @@ public class LyhytSyottoTest {
      */
     @Test
     public void testGetTodNak() {
-        System.out.println("getTodNak");
-        LyhytSyotto instance = new LyhytSyotto();
-        double expResult = 0.0;
-        double result = instance.getTodNak();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      assertEquals(0.9,lyhyt.getTodNak(),0.0001);
     }
-
-    /**
-     * Test of getVastaukset method, of class LyhytSyotto.
-     */
+//
+//    /**
+//     * Test of getVastaukset method, of class LyhytSyotto.
+//     */
     @Test
     public void testGetVastaukset() {
-        System.out.println("getVastaukset");
-        LyhytSyotto instance = new LyhytSyotto();
-        ArrayList<Lyonti> expResult = null;
-        ArrayList<Lyonti> result = instance.getVastaukset();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean testi = true;
+        for (Lyonti lyonti : lyhyt.getVastaukset()) {
+            if (!lyonti.equals(new Alakierre())) {
+                testi = false;
+            }
+        }
+        assertTrue(testi);
     }
-
-    /**
-     * Test of toString method, of class LyhytSyotto.
-     */
+//
+//    /**
+//     * Test of toString method, of class LyhytSyotto.
+//     */
     @Test
-    public void testToString() {
-        System.out.println("toString");
-        LyhytSyotto instance = new LyhytSyotto();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testToStringPalauttaaTrue() {
+     assertEquals("[1] Lyhyt Syotto" , lyhyt.toString());
     }
-
-    /**
-     * Test of equals method, of class LyhytSyotto.
-     */
+    
     @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        LyhytSyotto instance = new LyhytSyotto();
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testToStringPalauttaaFalse() {
+        assertFalse("LOL".equals(lyhyt.toString()));
+    }
+//
+//    /**
+//     * Test of equals method, of class LyhytSyotto.
+//     */
+    @Test
+    public void testEqualsPalauttaaTrue() {
+        assertTrue(new LyhytSyotto().equals(lyhyt));
+    }
+    @Test
+    public void testEqualsPalauttaaFalse() {
+        assertFalse(new PitkaSyotto().equals(lyhyt));
     }
     
 }

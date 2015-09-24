@@ -8,10 +8,10 @@ import Logiikka.TekoalynLogiikka;
 import Logiikka.PelaajanLogiikka;
 import Logiikka.YhteisLogiikka;
 import java.awt.Container;
-import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.JDialog;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -48,25 +48,28 @@ public class Kayttoliittyma implements Runnable {
         PalloRalli ralli = new PalloRalli(tuomari.getPelaaja1(), tuomari.getPelaaja2());
         ralli.palloLoppuu();
         YhteisLogiikka logiikka = new YhteisLogiikka(selostus, tulostaulu, tuomari, nk, ralli);
-        NappaimistonKuuntelija nappaimisto = new NappaimistonKuuntelija(logiikka,nk);
-        nk.getOK().getButton().addKeyListener(nappaimisto);
+                NappaimistonKuuntelija nappaimistonKuuntelija = new NappaimistonKuuntelija(logiikka, nk);
+        nk.getOK().getButton().addKeyListener(nappaimistonKuuntelija);
         NappienKuuntelija kuuntelija = new NappienKuuntelija(nk, logiikka);
-        
+
         for (Nappi nappi : nk.getNapit()) {
             nappi.getButton().addActionListener(kuuntelija);
-            nappi.getButton().addKeyListener(nappaimisto);
+            nappi.getButton().addKeyListener(nappaimistonKuuntelija);
+            nappi.getButton().requestFocusInWindow();
             ala.add(nappi.getButton());
         }
-       
+
+
+
         if (!tuomari.getPelaaja1().onkoIhmisenOhjaama()) {
             LyontienKasittelija lk = new LyontienKasittelija();
             logiikka.setTekoalynLogiikka1(new TekoalynLogiikka(selostus, tulostaulu, tuomari, nk, ralli, lk, tuomari.getPelaaja1()));
-            
+
         } else {
             PelaajanLogiikka pl = new PelaajanLogiikka(selostus, tulostaulu, tuomari, nk, ralli, tuomari.getPelaaja1());
             kuuntelija.setPelaajanLogiikka(pl);
-            nappaimisto.setPelaajanLogiikka(pl);
-           
+            nappaimistonKuuntelija.setPelaajanLogiikka(pl);
+
         }
         if (!tuomari.getPelaaja2().onkoIhmisenOhjaama()) {
             LyontienKasittelija lk = new LyontienKasittelija();
@@ -74,16 +77,15 @@ public class Kayttoliittyma implements Runnable {
         } else {
             PelaajanLogiikka pl2 = new PelaajanLogiikka(selostus, tulostaulu, tuomari, nk, ralli, tuomari.getPelaaja1());
             kuuntelija.setPelaajanLogiikka(pl2);
-            nappaimisto.setPelaajanLogiikka(pl2);
+            nappaimistonKuuntelija.setPelaajanLogiikka(pl2);
         }
+        
         nk.kaikkiMuutNapitFalseksi(nk.getOK());
         ralli.pelaajanVuoro(tuomari.getSyottaja());
         aloitusNaytto.add(yla);
         aloitusNaytto.add(ala);
         container.add(aloitusNaytto);
     }
-    
-
 
     @Override
     public void run() {
@@ -91,11 +93,24 @@ public class Kayttoliittyma implements Runnable {
         frame.setPreferredSize(new Dimension(700, 700));
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         luoAloitusNaytto(frame.getContentPane());
+
+        // frame.addKeyListener(nappaimisto);
+        
+//        frame.addKeyListener(new KeyAdapter() {
+//
+//            @Override
+//            public void keyPressed(KeyEvent e) {
+//                System.out.println("wattefuk");
+//                super.keyPressed(e); //To change body of generated methods, choose Tools | Templates.
+//            }
+//            
+//        });
+        //frame.requestFocus();
+ 
         frame.pack();
-       
         frame.setAlwaysOnTop(true);
         frame.setVisible(true);
-        
+
     }
 
 }

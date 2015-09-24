@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class SpinniTest {
-    
+    Spinni spinni;
     public SpinniTest() {
     }
     
@@ -32,6 +32,7 @@ public class SpinniTest {
     
     @Before
     public void setUp() {
+        this.spinni = new Spinni(0.5);
     }
     
     @After
@@ -43,56 +44,48 @@ public class SpinniTest {
      */
     @Test
     public void testGetTodNak() {
-        System.out.println("getTodNak");
-        Spinni instance = new Spinni();
-        double expResult = 0.0;
-        double result = instance.getTodNak();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+   assertEquals(0.5,spinni.getTodNak(),0.0001);
     }
-
-    /**
-     * Test of getVastaukset method, of class Spinni.
-     */
+//
+//    /**
+//     * Test of getVastaukset method, of class Spinni.
+//     */
     @Test
     public void testGetVastaukset() {
-        System.out.println("getVastaukset");
-        Spinni instance = new Spinni();
-        ArrayList<Lyonti> expResult = null;
-        ArrayList<Lyonti> result = instance.getVastaukset();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    boolean testi;
+    if (!spinni.getVastaukset().contains(new Spinni()) || !spinni.getVastaukset().contains(new Deffu()) || !spinni.getVastaukset().contains(new Blokki())) {
+        testi = false;
     }
-
-    /**
-     * Test of toString method, of class Spinni.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Spinni instance = new Spinni();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    else {
+        testi = true;
     }
-
-    /**
-     * Test of equals method, of class Spinni.
-     */
+    assertTrue(testi);
+    }
+//
+//    /**
+//     * Test of toString method, of class Spinni.
+//     */
     @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        Spinni instance = new Spinni();
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testToStringPalauttaaTrue() {
+        assertEquals("[6] Spinni", spinni.toString());
     }
     
+    @Test
+    public void testToStringPalauttaaFalse() {
+        assertFalse("LOL".equals(spinni.toString()));
+    }
+//
+//    /**
+//     * Test of equals method, of class Spinni.
+//     */
+    @Test
+  public void testEqualsPalauttaaTrue() {
+        assertTrue(new Spinni().equals(spinni));
+    }  
+  
+  @Test
+  public void testEqualsPalauttaaFalse() {
+      assertFalse(new Deffu().equals(spinni));
+  }
+//    
 }

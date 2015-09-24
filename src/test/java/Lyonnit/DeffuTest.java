@@ -5,6 +5,7 @@
  */
 package Lyonnit;
 
+import Logiikka.kasittelijat.LyontienKasittelija;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,22 +19,25 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class DeffuTest {
-    
+
+    private Deffu deffu;
+
     public DeffuTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        this.deffu = new Deffu(0.5);
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,56 +47,51 @@ public class DeffuTest {
      */
     @Test
     public void testGetTodNak() {
-        System.out.println("getTodNak");
-        Deffu instance = new Deffu();
-        double expResult = 0.0;
-        double result = instance.getTodNak();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(0.5, deffu.getTodNak(), 0.0001);
     }
+//
+//    /**
+//     * Test of getVastaukset method, of class Deffu.
+//     */
 
-    /**
-     * Test of getVastaukset method, of class Deffu.
-     */
     @Test
     public void testGetVastaukset() {
-        System.out.println("getVastaukset");
-        Deffu instance = new Deffu();
-        ArrayList<Lyonti> expResult = null;
-        ArrayList<Lyonti> result = instance.getVastaukset();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean testi = true;
+        if (!deffu.getVastaukset().contains(new Alakierre()) || !deffu.getVastaukset().contains(new Spinni())) {
+            testi = false;
+        } else {
+            testi = true;
+        }
+        assertTrue(testi);
     }
+//
+//    /**
+//     * Test of toString method, of class Deffu.
+//     */
 
-    /**
-     * Test of toString method, of class Deffu.
-     */
     @Test
-    public void testToString() {
-        System.out.println("toString");
-        Deffu instance = new Deffu();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of equals method, of class Deffu.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        Deffu instance = new Deffu();
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testToStringPalauttaaTrue() {
+        assertEquals("[4] Deffu", deffu.toString());
     }
     
+    @Test
+    public void testToStringPalauttaaFalse() {
+        assertFalse("LOL".equals(deffu.toString()));
+    }
+//
+//    /**
+//     * Test of equals method, of class Deffu.
+//     */
+
+    @Test
+    public void testEqualsPalauttaaTrue() {
+        Deffu testi = new Deffu();
+        assertTrue(testi.equals(deffu));
+    }
+    
+    @Test
+    public void testEqualsPalauttaaFalse() {
+     assertFalse(new Spinni().equals(deffu));
+    }
+//    
 }

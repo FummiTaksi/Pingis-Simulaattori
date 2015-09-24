@@ -42,55 +42,55 @@ public class LyontienKasittelijaTest {
     /**
      * Test of lisaaLyontiListaan method, of class LyontienKasittelija.
      */
-    @Test
-    public void testLisaaLyontiListaan() {
-        System.out.println("lisaaLyontiListaan");
-        Lyonti lyonti = null;
-        LyontienKasittelija instance = new LyontienKasittelija();
-        instance.lisaaLyontiListaan(lyonti);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of tyhjennaLista method, of class LyontienKasittelija.
-     */
-    @Test
-    public void testTyhjennaLista() {
-        System.out.println("tyhjennaLista");
-        LyontienKasittelija instance = new LyontienKasittelija();
-        instance.tyhjennaLista();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of arvoLyonti method, of class LyontienKasittelija.
-     */
-    @Test
-    public void testArvoLyonti_ArrayList() {
-        System.out.println("arvoLyonti");
-        ArrayList<Lyonti> lyonteja = null;
-        LyontienKasittelija instance = new LyontienKasittelija();
-        Lyonti expResult = null;
-        Lyonti result = instance.arvoLyonti(lyonteja);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of arvoLyonti method, of class LyontienKasittelija.
-     */
-    @Test
-    public void testArvoLyonti_0args() {
-        System.out.println("arvoLyonti");
-        LyontienKasittelija instance = new LyontienKasittelija();
-        Lyonti expResult = null;
-        Lyonti result = instance.arvoLyonti();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
+//    @Test
+//    public void testLisaaLyontiListaan() {
+//        System.out.println("lisaaLyontiListaan");
+//        Lyonti lyonti = null;
+//        LyontienKasittelija instance = new LyontienKasittelija();
+//        instance.lisaaLyontiListaan(lyonti);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of tyhjennaLista method, of class LyontienKasittelija.
+//     */
+//    @Test
+//    public void testTyhjennaLista() {
+//        System.out.println("tyhjennaLista");
+//        LyontienKasittelija instance = new LyontienKasittelija();
+//        instance.tyhjennaLista();
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of arvoLyonti method, of class LyontienKasittelija.
+//     */
+//    @Test
+//    public void testArvoLyonti_ArrayList() {
+//        System.out.println("arvoLyonti");
+//        ArrayList<Lyonti> lyonteja = null;
+//        LyontienKasittelija instance = new LyontienKasittelija();
+//        Lyonti expResult = null;
+//        Lyonti result = instance.arvoLyonti(lyonteja);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of arvoLyonti method, of class LyontienKasittelija.
+//     */
+//    @Test
+//    public void testArvoLyonti_0args() {
+//        System.out.println("arvoLyonti");
+//        LyontienKasittelija instance = new LyontienKasittelija();
+//        Lyonti expResult = null;
+//        Lyonti result = instance.arvoLyonti();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//    
 }

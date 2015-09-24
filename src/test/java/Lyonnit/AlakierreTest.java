@@ -5,6 +5,7 @@
  */
 package Lyonnit;
 
+import Logiikka.kasittelijat.LyontienKasittelija;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,6 +19,7 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class AlakierreTest {
+    private Alakierre alakierre;
     
     public AlakierreTest() {
     }
@@ -32,6 +34,7 @@ public class AlakierreTest {
     
     @Before
     public void setUp() {
+        this.alakierre = new Alakierre(0.5);
     }
     
     @After
@@ -42,57 +45,55 @@ public class AlakierreTest {
      * Test of getVastaukset method, of class Alakierre.
      */
     @Test
-    public void testGetVastaukset() {
-        System.out.println("getVastaukset");
-        Alakierre instance = new Alakierre();
-        ArrayList<Lyonti> expResult = null;
-        ArrayList<Lyonti> result = instance.getVastaukset();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetVastauksetToimii() {
+        boolean testi;
+        if (!alakierre.getVastaukset().contains(new Alakierre()) || !alakierre.getVastaukset().contains(new Spinni())) {
+            testi = false;
+        }
+        else {
+            testi = true;
+        }
+        assertTrue(testi);
     }
 
     /**
      * Test of getTodNak method, of class Alakierre.
-     */
-    @Test
-    public void testGetTodNak() {
-        System.out.println("getTodNak");
-        Alakierre instance = new Alakierre();
-        double expResult = 0.0;
-        double result = instance.getTodNak();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+     *
+
 
     /**
      * Test of toString method, of class Alakierre.
      */
     @Test
-    public void testToString() {
-        System.out.println("toString");
-        Alakierre instance = new Alakierre();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testToStringPalauttaaTrue() {
+       assertEquals("[3] Alakierre", alakierre.toString());
+    }
+    
+    @Test
+    public void testToStringPalauttaaFalse() {
+        assertFalse("LOL".equals(alakierre.toString()));
+    }
+    
+        @Test
+    public void testGetTodNakParametriton() {
+        assertEquals(alakierre.getTodNak(), 0.5,0.00001);
     }
 
     /**
      * Test of equals method, of class Alakierre.
      */
     @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        Alakierre instance = new Alakierre();
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testEqualsPalauttaaFalsen() {
+    assertFalse(new Blokki().equals(alakierre));
+
     }
+    
+    @Test
+    public void testEqualsPalauttaaTruen() {
+        Alakierre eiParametria = new Alakierre();
+        assertTrue(eiParametria.equals(alakierre));
+    }
+    
+    
     
 }

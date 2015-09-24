@@ -1,5 +1,6 @@
 package Logiikka.ApuLuokat;
 
+
 import Lyonnit.Lyonti;
 import java.util.ArrayList;
 import java.util.Random;

@@ -9,7 +9,6 @@ import Logiikka.ApuLuokat.PalloRalli;
 import Logiikka.ApuLuokat.Pelaaja;
 import Logiikka.ApuLuokat.Tuomari;
 import Logiikka.kasittelijat.NappienKasittelija;
-import Lyonnit.Lyonti;
 import javax.swing.JLabel;
 
 /**

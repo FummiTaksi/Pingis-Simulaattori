@@ -5,6 +5,7 @@
  */
 package Lyonnit;
 
+import Logiikka.kasittelijat.LyontienKasittelija;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,22 +19,25 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class BlokkiTest {
-    
+
+    private Blokki blokki;
+
     public BlokkiTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        this.blokki = new Blokki(0.5);
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,56 +47,50 @@ public class BlokkiTest {
      */
     @Test
     public void testGetTodNak() {
-        System.out.println("getTodNak");
-        Blokki instance = new Blokki();
-        double expResult = 0.0;
-        double result = instance.getTodNak();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(blokki.getTodNak(), 0.5, 0.0001);
     }
+//
+//    /**
+//     * Test of getVastaukset method, of class Blokki.
+//     */
 
-    /**
-     * Test of getVastaukset method, of class Blokki.
-     */
     @Test
     public void testGetVastaukset() {
-        System.out.println("getVastaukset");
-        Blokki instance = new Blokki();
-        ArrayList<Lyonti> expResult = null;
-        ArrayList<Lyonti> result = instance.getVastaukset();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean testi;
+        if (!blokki.getVastaukset().contains(new Spinni()) || !blokki.getVastaukset().contains(new Deffu())) {
+            testi = false;
+        }
+        else {
+            testi = true;
+        }
+        assertTrue(testi);
     }
-
-    /**
-     * Test of toString method, of class Blokki.
-     */
+//
+//    /**
+//     * Test of toString method, of class Blokki.
+//     */
     @Test
-    public void testToString() {
-        System.out.println("toString");
-        Blokki instance = new Blokki();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of equals method, of class Blokki.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        Blokki instance = new Blokki();
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testToStringPalauttaaTrue() {
+        assertEquals("[5] Blokki",blokki.toString());
     }
     
+    @Test
+    public void testToStringPalauttaaFalse() {
+        assertFalse("LOL".equals(blokki.toString()));
+    }
+
+//    /**
+//     * Test of equals method, of class Blokki.
+//     */
+    @Test
+    public void testEqualsPalauttaaTrue() {
+        Blokki testi  = new Blokki();
+        assertTrue(testi.equals(blokki));
+    }
+    
+    @Test
+    public void testEqualsPalauttaaFalse() {
+      assertFalse(new LyhytSyotto().equals(blokki));
+    }
+//    
 }

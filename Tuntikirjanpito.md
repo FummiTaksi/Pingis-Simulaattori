@@ -7,4 +7,5 @@
 6.9 Bugien korjailua 1h
 9.9 Lisätty toiminnallisuus : Lyöntejä voi lyödä nappia painamalla. Ei toimi täydellisesti. 2h
 10.9 Testien tekoa ja bugien korjailua. 2h
-15.9 Debuggauksen suunnittelua. 
+15.9 Debuggauksen suunnittelua. 1h
+21.9 Bugin kartoittamista Arton kanssa: JButtonit eivät toimi niinkuin pitäisi. 0,5h

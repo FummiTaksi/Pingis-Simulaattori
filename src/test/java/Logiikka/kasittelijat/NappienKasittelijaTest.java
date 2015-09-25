@@ -6,7 +6,13 @@
 package Logiikka.kasittelijat;
 
 import Logiikka.ApuLuokat.Nappi;
+import Lyonnit.Alakierre;
+import Lyonnit.Blokki;
+import Lyonnit.Deffu;
+import Lyonnit.LyhytSyotto;
 import Lyonnit.Lyonti;
+import Lyonnit.PitkaSyotto;
+import Lyonnit.Spinni;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,7 +26,7 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class NappienKasittelijaTest {
-    
+    private NappienKasittelija nk;
     public NappienKasittelijaTest() {
     }
     
@@ -34,6 +40,7 @@ public class NappienKasittelijaTest {
     
     @Before
     public void setUp() {
+        this.nk = new NappienKasittelija();
     }
     
     @After
@@ -43,216 +50,222 @@ public class NappienKasittelijaTest {
     /**
      * Test of lisaaNappiListaan method, of class NappienKasittelija.
      */
-//    @Test
-//    public void testLisaaNappiListaan() {
-//        System.out.println("lisaaNappiListaan");
-//        Lyonti lyonti = null;
-//        NappienKasittelija instance = new NappienKasittelija();
-//        instance.lisaaNappiListaan(lyonti);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testLisaaNappiListaan() {
+     nk.getNapit().clear();
+     nk.lisaaNappiListaan(new LyhytSyotto());
+     assertTrue(nk.getNapit().contains(new Nappi(new LyhytSyotto())));
+    }
 //
 //    /**
 //     * Test of lisaaKaikkiNapitListaan method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testLisaaKaikkiNapitListaan() {
-//        System.out.println("lisaaKaikkiNapitListaan");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        instance.lisaaKaikkiNapitListaan();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testLisaaKaikkiNapitListaan() {
+     boolean ok = false;
+     boolean lyhyt = false;
+     boolean pitka = false;
+     boolean alakierre = false;
+     boolean deffu  = false;
+     boolean blokki = false;
+     boolean spinni = false;
+     for (Nappi nappi : nk.getNapit()) {
+         if (nappi.equals(new Nappi("[ENTER] OK"))) {
+             ok = true;
+         }
+         if (nappi.equals(new Nappi(new LyhytSyotto()))) {
+             lyhyt = true;
+         }
+         if (nappi.equals(new Nappi(new PitkaSyotto()))) {
+             pitka = true;
+         }
+         if (nappi.equals(new Nappi(new Alakierre()))) {
+             alakierre = true;
+         }
+         if (nappi.equals(new Nappi(new Deffu()))) {
+             deffu = true;
+         }
+         if (nappi.equals(new Nappi(new Blokki()))) {
+             blokki = true;
+         }
+         if (nappi.equals(new Nappi(new Spinni()))) {
+             spinni = true;
+         }
+     }
+     boolean testi;
+     if (ok && lyhyt && pitka  && alakierre && deffu && blokki && spinni) {
+         testi = true;
+     }
+     else {
+         testi = false;
+     }
+     assertTrue(testi);
+    }
 //
 //    /**
 //     * Test of getOK method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testGetOK() {
-//        System.out.println("getOK");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        Nappi expResult = null;
-//        Nappi result = instance.getOK();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetOK() {
+    assertEquals(new Nappi("[ENTER] OK"), nk.getOK());
+    }
 //
 //    /**
 //     * Test of onkoNappiPaalla method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testOnkoNappiPaalla() {
-//        System.out.println("onkoNappiPaalla");
-//        Nappi nappi = null;
-//        NappienKasittelija instance = new NappienKasittelija();
-//        boolean expResult = false;
-//        boolean result = instance.onkoNappiPaalla(nappi);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testOnkoNappiPaallaPalauttaaTrue() {
+    nk.getOK().getButton().setEnabled(true);
+    assertTrue(nk.onkoNappiPaalla(nk.getOK()));
+    }
+    
+    @Test
+    public void testOnkoNappiPaallaPalauttaaFalse() {
+        nk.getOK().getButton().setEnabled(false);
+        assertFalse(nk.onkoNappiPaalla(nk.getOK()));
+    }
 //
 //    /**
 //     * Test of getLyhytSyotto method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testGetLyhytSyotto() {
-//        System.out.println("getLyhytSyotto");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        Nappi expResult = null;
-//        Nappi result = instance.getLyhytSyotto();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetLyhytSyotto() {
+       assertEquals(new Nappi(new LyhytSyotto()),nk.getLyhytSyotto());
+    }
+    
 //
 //    /**
 //     * Test of getPitkaSyotto method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testGetPitkaSyotto() {
-//        System.out.println("getPitkaSyotto");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        Nappi expResult = null;
-//        Nappi result = instance.getPitkaSyotto();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetPitkaSyotto() {
+      assertEquals(new Nappi(new PitkaSyotto()),nk.getPitkaSyotto());
+    }
 //
 //    /**
 //     * Test of getAlakierre method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testGetAlakierre() {
-//        System.out.println("getAlakierre");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        Nappi expResult = null;
-//        Nappi result = instance.getAlakierre();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetAlakierre() {
+    assertEquals(new Nappi(new Alakierre()),nk.getAlakierre());
+    }
 //
 //    /**
 //     * Test of getDeffu method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testGetDeffu() {
-//        System.out.println("getDeffu");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        Nappi expResult = null;
-//        Nappi result = instance.getDeffu();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetDeffu() {
+    assertEquals(new Nappi(new Deffu()),nk.getDeffu());
+    }
 //
 //    /**
 //     * Test of getBlokki method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testGetBlokki() {
-//        System.out.println("getBlokki");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        Nappi expResult = null;
-//        Nappi result = instance.getBlokki();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetBlokki() {
+    assertEquals(new Nappi(new Blokki()),nk.getBlokki());
+    }
 //
 //    /**
 //     * Test of getSpinni method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testGetSpinni() {
-//        System.out.println("getSpinni");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        Nappi expResult = null;
-//        Nappi result = instance.getSpinni();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetSpinni() {
+        assertEquals(new Nappi(new Spinni()),nk.getSpinni());
+    }
 //
 //    /**
 //     * Test of getNapit method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testGetNapit() {
-//        System.out.println("getNapit");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        ArrayList<Nappi> expResult = null;
-//        ArrayList<Nappi> result = instance.getNapit();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetNapit() {
+      nk.getNapit().clear();
+      assertTrue(nk.getNapit().isEmpty());
+    }
+    
 //
 //    /**
 //     * Test of lisaaPaallaOlevaksi method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testLisaaPaallaOlevaksi() {
-//        System.out.println("lisaaPaallaOlevaksi");
-//        Nappi nappi = null;
-//        NappienKasittelija instance = new NappienKasittelija();
-//        instance.lisaaPaallaOlevaksi(nappi);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testLisaaPaallaOlevaksi() {
+        nk.lisaaPaallaOlevaksi(nk.getOK());
+        assertTrue(nk.getPaallaOlevat().contains(nk.getOK()));
+    }
+    
 //
 //    /**
 //     * Test of tyhjennaPaallaOlevienLista method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testTyhjennaPaallaOlevienLista() {
-//        System.out.println("tyhjennaPaallaOlevienLista");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        instance.tyhjennaPaallaOlevienLista();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testTyhjennaPaallaOlevienLista() {
+       nk.lisaaPaallaOlevaksi(nk.getOK());
+       nk.tyhjennaPaallaOlevienLista();
+       assertTrue(nk.getPaallaOlevat().isEmpty());
+    }
+    
+    
 //
 //    /**
 //     * Test of kaikkiMuutNapitFalseksi method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testKaikkiMuutNapitFalseksi_0args() {
-//        System.out.println("kaikkiMuutNapitFalseksi");
-//        NappienKasittelija instance = new NappienKasittelija();
-//        instance.kaikkiMuutNapitFalseksi();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testKaikkiMuutNapitFalseksiIlmanParametria() {
+      nk.lisaaPaallaOlevaksi(nk.getOK());
+      nk.lisaaPaallaOlevaksi(nk.getSpinni());
+      nk.kaikkiMuutNapitFalseksi();
+      boolean testi = true;
+      for (Nappi nappi : nk.getNapit()) {
+          if (nappi.equals(nk.getOK()) || nappi.equals(nk.getSpinni())) {
+              if (!nappi.getButton().isEnabled()) {
+                  testi = false;
+                  break;
+              }
+          }
+          else {
+              if (nappi.getButton().isEnabled()) {
+                  testi = false;
+                  break;
+              }
+          }
+      }
+      assertTrue(testi);
+    }
+    
 //
 //    /**
 //     * Test of kaikkiMuutNapitFalseksi method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testKaikkiMuutNapitFalseksi_Nappi() {
-//        System.out.println("kaikkiMuutNapitFalseksi");
-//        Nappi nimi = null;
-//        NappienKasittelija instance = new NappienKasittelija();
-//        instance.kaikkiMuutNapitFalseksi(nimi);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testKaikkiMuutNapitFalseksiParametrilla() {
+       nk.kaikkiMuutNapitFalseksi(nk.getAlakierre());
+       boolean testi = true;
+       for (Nappi nappi : nk.getNapit()) {
+           if (nappi.equals(nk.getAlakierre())) {
+               if (!nappi.getButton().isEnabled()) {
+                   testi = false;
+                   break;
+               }
+           }
+           else {
+               if (nappi.getButton().isEnabled()) {
+                   testi = false;
+                   break;
+               }
+           }
+       }
+       assertTrue(testi);
+    }
+    
 //
 //    /**
 //     * Test of asetaFalseksi method, of class NappienKasittelija.
 //     */
-//    @Test
-//    public void testAsetaFalseksi() {
-//        System.out.println("asetaFalseksi");
-//        Nappi falseNappi = null;
-//        NappienKasittelija instance = new NappienKasittelija();
-//        instance.asetaFalseksi(falseNappi);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testAsetaFalseksi() {
+        nk.asetaFalseksi(nk.getBlokki());
+        assertFalse(nk.getBlokki().getButton().isEnabled());
+    }
+    
 //    
 }

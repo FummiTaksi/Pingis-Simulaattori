@@ -9,3 +9,5 @@
 10.9 Testien tekoa ja bugien korjailua. 2h
 15.9 Debuggauksen suunnittelua. 1h
 21.9 Bugin kartoittamista Arton kanssa: JButtonit eivät toimi niinkuin pitäisi. 0,5h
+24.9 Testien kirjoittaminen kaikille Lyönti-luokille. 2h
+25.9 Uusi luokka logiikan ja käyttöliittymän eriyttämiseen: Pelialusta. Testit valmiina kaikille Apuluokat-pakkauksen luokille paitsi Pelialustalle. Ohjelman toiminta edelleen sama vaikka uusi luokka tehty, ja vanhoista luokista muutamia metodeja debugattu järkeväksi. Seuraavana edessä Logiikoiden testaaminen, joka on aikamoinen työmaa.

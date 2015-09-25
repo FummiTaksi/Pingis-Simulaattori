@@ -1,6 +1,7 @@
 package Logiikka.ApuLuokat;
 
 
+import Logiikka.kasittelijat.LyontienKasittelija;
 import Lyonnit.Lyonti;
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,7 +12,7 @@ import java.util.Random;
  * and open the template in the editor.
  */
 /**
- *
+ * Palloralli luokka pitää kirjaa pallorallin kulusta.
  * @author Aleksi
  */
 public class PalloRalli {
@@ -30,11 +31,17 @@ public class PalloRalli {
         this.palloJatkuu = true;
 
     }
-
+    /**
+     * Palauttaa true jos palloralli on käynnissä, false muuten.
+     * @return 
+     */
     public boolean palloKaynnissa() {
         return palloJatkuu;
     }
-
+    /**
+     * Palauttaa sen Pelaaja-olion, joka on lyöntivuorossa.
+     * @return 
+     */
     public Pelaaja palautaLyoja() {
         if (onkoPelaajan1Lyonti) {
             return pelaaja1;
@@ -42,7 +49,10 @@ public class PalloRalli {
             return pelaaja2;
         }
     }
-    
+    /**
+     * Palauttaa lyönnin, joka on viimeiseksi lyöty pöytään.
+     * @return 
+     */
     public Lyonti palautaLyonti() {
         if (palautaLyoja().equals(pelaaja1)) {
             return getPelaajan2Lyonti();
@@ -51,7 +61,10 @@ public class PalloRalli {
             return getPelaajan1Lyonti();
         }
     }
-
+    /**
+     * Asettaa parametrina olevan pelaajan lyöntivuoroon.
+     * @param pelaaja 
+     */
     public void pelaajanVuoro(Pelaaja pelaaja) {
         if (pelaaja.equals(pelaaja1)) {
             this.onkoPelaajan1Lyonti = true;
@@ -62,15 +75,23 @@ public class PalloRalli {
             this.onkoPelaajan1Lyonti = false;
         }
     }
-
+    /**
+     * Asettaa pallon loppuneeksi.
+     */
     public void palloLoppuu() {
         palloJatkuu = false;
     }
-
+    /**
+     * Asettaa pallon alkaneeksi.
+     */
     public void palloAlkaa() {
         palloJatkuu = true;
     }
-
+    /**
+     * Asettaa parametrin pelaajan lyönniksi parametrin lyönnin.
+     * @param pelaaja
+     * @param lyonti 
+     */
     public void setPelaajanLyonti(Pelaaja pelaaja, Lyonti lyonti) {
         if (pelaaja.equals(pelaaja1)) {
             pelaajan1Lyonti = lyonti;
@@ -79,7 +100,7 @@ public class PalloRalli {
             pelaajan2Lyonti = lyonti;
         }
     }
-
+    
     public Lyonti getPelaajan2Lyonti() {
         return pelaajan2Lyonti;
     }
@@ -87,15 +108,25 @@ public class PalloRalli {
     public Lyonti getPelaajan1Lyonti() {
         return pelaajan1Lyonti;
     }
-
+    /**
+     * Palauttaa true jos pelaaja1 on lyöntivuorossa. False jos ei ole.
+     * @return 
+     */
     public boolean onkoPelaaja1Vuorossa() {
-        return onkoPelaajan1Lyonti;
+         return onkoPelaajan1Lyonti;
     }
-
+    /**
+     * Palauttaa true jos pelaaja2 on lyöntivuorossa. False jos ei ole.
+     * @return 
+     */
     public boolean onkoPelaaja2Vuorossa() {
         return onkoPelaajan2Lyonti;
     }
-
+    /**
+     * Palauttaa true jos parametrin lyönti menee pöytään. False jos ei.
+     * @param lyonti
+     * @return 
+     */
     public boolean lyoLyonti(Lyonti lyonti) {
         double arvottuLuku = new Random().nextDouble();
         if (arvottuLuku <= lyonti.getTodNak()) {
@@ -103,7 +134,11 @@ public class PalloRalli {
         }
         return false;
     }
-
+    /**
+     * 
+     * @param todnak
+     * @return 
+     */
     public boolean lyoLyonti(double todnak) {
         double arvottuLuku = new Random().nextDouble();
         if (arvottuLuku <= todnak) {
@@ -111,9 +146,14 @@ public class PalloRalli {
         }
         return false;
     }
-
+    /**
+     * Arpoo parametrin ArrayListasta lyönnin, palauttaa true jos kyseinen lyönti menee pöytään, false muuten.
+     * @param lyonnit
+     * @return 
+     */
     public boolean lyoLyontiSatunnaisesti(ArrayList<Lyonti> lyonnit) {
-        Lyonti arvottuLyonti = lyonnit.get(new Random().nextInt(lyonnit.size() - 1));
+        LyontienKasittelija lk = new LyontienKasittelija();
+        Lyonti arvottuLyonti = lk.arvoLyonti(lyonnit);
         return lyoLyonti(arvottuLyonti);
     }
 

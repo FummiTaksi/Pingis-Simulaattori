@@ -7,6 +7,7 @@ package Logiikka;
 
 import Logiikka.ApuLuokat.PalloRalli;
 import Logiikka.ApuLuokat.Pelaaja;
+import Logiikka.ApuLuokat.Pelialusta;
 import Logiikka.ApuLuokat.Tuomari;
 import Logiikka.kasittelijat.NappienKasittelija;
 import javax.swing.JLabel;
@@ -18,8 +19,8 @@ import javax.swing.JLabel;
 public class YhteisLogiikka extends Logiikka{
     private TekoalynLogiikka tekoalynLogiikka1;
     private TekoalynLogiikka tekoalynLogiikka2;
-    public YhteisLogiikka(JLabel selostus, JLabel tulostaulu, Tuomari tuomari, NappienKasittelija nk, PalloRalli ralli) {
-        super (selostus,tulostaulu,tuomari,nk,ralli);
+    public YhteisLogiikka(Tuomari tuomari, NappienKasittelija nk, PalloRalli ralli,Pelialusta alusta) {
+        super (tuomari,nk,ralli,alusta);
     }
     
     public void setTekoalynLogiikka1(TekoalynLogiikka logiikka) {
@@ -34,10 +35,10 @@ public class YhteisLogiikka extends Logiikka{
     
     public void syotonAlustus() {
         if (tuomari.getSyottaja().onkoIhmisenOhjaama()) {
-            selostus.setText("Sinun syöttövuorosi");
+            alusta.muutaSelostusta("Sinun syöttövuorosi");
             
         } else {
-            selostus.setText("Vastustajan syöttövuoro.");
+            alusta.muutaSelostusta("Vastustajan syöttövuoro.");
         }
         nk.kaikkiMuutNapitFalseksi(nk.getOK());
         
@@ -45,7 +46,7 @@ public class YhteisLogiikka extends Logiikka{
     public void palloAlkaa() {
         ralli.palloAlkaa();
         if (tuomari.getSyottaja().onkoIhmisenOhjaama()) {
-            selostus.setText("Sinun syöttövuorosi.Valitse joko pitkä tai lyhyt syöttö.");
+            alusta.muutaSelostusta("Sinun syöttövuorosi.Valitse joko pitkä tai lyhyt syöttö.");
             nk.lisaaPaallaOlevaksi(nk.getLyhytSyotto());
             nk.lisaaPaallaOlevaksi(nk.getPitkaSyotto());
             nk.kaikkiMuutNapitFalseksi();
@@ -64,10 +65,10 @@ public class YhteisLogiikka extends Logiikka{
     
     public void peliLoppuu(Pelaaja voittaja) {
         if (voittaja.onkoIhmisenOhjaama()) {
-            selostus.setText( voittaja + " voitit! Onnittelut!");
+            alusta.muutaSelostusta( voittaja + " voitit! Onnittelut!");
         }
         else {
-            selostus.setText(voittaja.toString() + " voitti! Parempi onni ensi kerralla.");
+            alusta.muutaSelostusta(voittaja.toString() + " voitti! Parempi onni ensi kerralla.");
         }
     }
     

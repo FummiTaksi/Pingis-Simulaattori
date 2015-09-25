@@ -10,18 +10,25 @@ import Lyonnit.Lyonti;
 import javax.swing.JButton;
 
 /**
- *
+ * Nappi-olio tietää Lyönnin ja siihen yhdistävän JButtonin.
  * @author Aleksi
  */
 public class Nappi {
     private JButton nappi;
     private Lyonti lyonti;
     
-    public Nappi(JButton nappi,Lyonti lyonti) {
-        this.nappi = nappi;
+    public Nappi(Lyonti lyonti) {
         this.lyonti = lyonti;
+        this.nappi = new JButton(lyonti.toString());
     }
-    
+    /**
+     * Voidaan luoda ilman Lyonti-oliota. Tämä on käytännöllistä OK-napin kannalta.
+     * @param napinNimi 
+     */
+    public Nappi(String napinNimi) {
+        this.lyonti = null;
+        this.nappi = new JButton(napinNimi);
+    }
     public JButton getButton() {
         return nappi;
     }

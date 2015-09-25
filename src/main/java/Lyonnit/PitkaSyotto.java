@@ -8,7 +8,7 @@ package Lyonnit;
 import java.util.ArrayList;
 
 /**
- *
+ * Pitkällä syötöllä voit saada helpommin suoria pisteitä mutta vastustaja voi päästä hyökkäämään siitä.
  * @author Aleksi
  */
 public class PitkaSyotto implements Lyonti {

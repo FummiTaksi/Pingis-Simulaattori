@@ -5,6 +5,7 @@
  */
 package Logiikka;
 
+import Logiikka.ApuLuokat.Pelialusta;
 import Logiikka.ApuLuokat.Tuomari;
 import Logiikka.ApuLuokat.PalloRalli;
 import Logiikka.ApuLuokat.Pelaaja;
@@ -18,18 +19,16 @@ import javax.swing.JLabel;
  */
 public abstract class Logiikka {
 
-    protected JLabel selostus;
-    protected JLabel tulostaulu;
+
     protected Tuomari tuomari;
     protected NappienKasittelija nk;
     protected PalloRalli ralli;
-
-    public Logiikka(JLabel selostus, JLabel tulostaulu, Tuomari tuomari, NappienKasittelija nk, PalloRalli ralli) {
-        this.selostus = selostus;
-        this.tulostaulu = tulostaulu;
+    protected Pelialusta alusta;
+    public Logiikka(Tuomari tuomari, NappienKasittelija nk, PalloRalli ralli,Pelialusta alusta) {
         this.tuomari = tuomari;
         this.nk = nk;
         this.ralli = ralli;
+        this.alusta = alusta;
     }
 
     public PalloRalli getPalloRalli() {
@@ -37,7 +36,7 @@ public abstract class Logiikka {
     }
 
     public void lyontiMeneePoytaan(String uusiSelostus, Lyonti lyonti, Pelaaja pelaaja) {
-        selostus.setText(uusiSelostus);
+        alusta.muutaSelostusta(uusiSelostus);
         ralli.setPelaajanLyonti(pelaaja, lyonti);
         ralli.pelaajanVuoro(tuomari.getVastustaja(pelaaja));
         nk.kaikkiMuutNapitFalseksi(nk.getOK());
@@ -96,8 +95,8 @@ public abstract class Logiikka {
 
     public void lyontiEiMenePoytaan(String uusiSelostus,Pelaaja pelaaja) {
         tuomari.lisaaVastustajallePiste(pelaaja);
-        tulostaulu.setText(tuomari.toString());
-        selostus.setText(uusiSelostus);
+        alusta.muutaTulosKenttaa(tuomari.toString());
+        alusta.muutaSelostusta(uusiSelostus);
         ralli.palloLoppuu();
         nk.kaikkiMuutNapitFalseksi(nk.getOK());
     }

@@ -5,6 +5,7 @@
  */
 package Logiikka.ApuLuokat;
 
+import Lyonnit.LyhytSyotto;
 import Lyonnit.Lyonti;
 import javax.swing.JButton;
 import org.junit.After;
@@ -19,7 +20,8 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class NappiTest {
-    
+    private Nappi lyhytSyotto;
+    private Nappi ok;
     public NappiTest() {
     }
     
@@ -33,6 +35,8 @@ public class NappiTest {
     
     @Before
     public void setUp() {
+        this.lyhytSyotto = new Nappi(new LyhytSyotto());
+        this.ok = new Nappi("[ENTER] OK");
     }
     
     @After
@@ -42,58 +46,48 @@ public class NappiTest {
     /**
      * Test of getButton method, of class Nappi.
      */
-//    @Test
-//    public void testGetButton() {
-//        System.out.println("getButton");
-//        Nappi instance = null;
-//        JButton expResult = null;
-//        JButton result = instance.getButton();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetButtonToimiiKunKonstruktorissaLyonti() {
+       assertEquals(new JButton("[1] Lyhyt Syotto").getActionCommand(),lyhytSyotto.getButton().getActionCommand());
+    }
+    
+    @Test
+    public void testGetButtonToimiiKunKonstruktorissaString() {
+        assertEquals(new JButton("[ENTER] OK").getActionCommand(), ok.getButton().getActionCommand());
+    }
 //
 //    /**
 //     * Test of getLyonti method, of class Nappi.
 //     */
-//    @Test
-//    public void testGetLyonti() {
-//        System.out.println("getLyonti");
-//        Nappi instance = null;
-//        Lyonti expResult = null;
-//        Lyonti result = instance.getLyonti();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetLyontiPalauttaaOikeanLyonnin() {
+        assertEquals(new LyhytSyotto(),lyhytSyotto.getLyonti());
+    }
+    
+    @Test
+    public void testGetLyontiPalauttaaNullJosKonstruktorissaString() {
+        assertEquals(null,ok.getLyonti());
+    }
 //
 //    /**
 //     * Test of toString method, of class Nappi.
 //     */
-//    @Test
-//    public void testToString() {
-//        System.out.println("toString");
-//        Nappi instance = null;
-//        String expResult = "";
-//        String result = instance.toString();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testToString() {
+     assertEquals("[1] Lyhyt Syotto",lyhytSyotto.toString());
+    }
 //
 //    /**
 //     * Test of equals method, of class Nappi.
 //     */
-//    @Test
-//    public void testEquals() {
-//        System.out.println("equals");
-//        Object o = null;
-//        Nappi instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.equals(o);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testEqualsPalauttaaTrue() {
+        assertTrue(new Nappi(new LyhytSyotto()).equals(lyhytSyotto));
+    }
+    
+    @Test
+    public void testEqualsPalauttaaFalse() {
+        assertFalse(lyhytSyotto.equals(ok));
+    }
     
 }

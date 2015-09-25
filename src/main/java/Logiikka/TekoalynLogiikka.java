@@ -3,6 +3,7 @@ package Logiikka;
 import Logiikka.ApuLuokat.Tuomari;
 import Logiikka.ApuLuokat.PalloRalli;
 import Logiikka.ApuLuokat.Pelaaja;
+import Logiikka.ApuLuokat.Pelialusta;
 import Logiikka.kasittelijat.LyontienKasittelija;
 import Logiikka.kasittelijat.NappienKasittelija;
 import Lyonnit.Alakierre;
@@ -27,8 +28,8 @@ public class TekoalynLogiikka extends Logiikka {
 
     private LyontienKasittelija lk;
     private Pelaaja pelaaja;
-    public TekoalynLogiikka(JLabel selostus, JLabel tuloskentta, Tuomari tuomari, NappienKasittelija nk, PalloRalli ralli, LyontienKasittelija lk,Pelaaja pelaaja) {
-        super(selostus, tuloskentta, tuomari, nk, ralli);
+    public TekoalynLogiikka(Tuomari tuomari, NappienKasittelija nk, PalloRalli ralli,Pelialusta alusta, LyontienKasittelija lk,Pelaaja pelaaja) {
+        super(tuomari, nk, ralli,alusta);
         this.lk = lk;
         this.pelaaja = pelaaja;
     }

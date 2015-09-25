@@ -2,6 +2,7 @@
 import Logiikka.ApuLuokat.Nappi;
 import Logiikka.ApuLuokat.Tuomari;
 import Logiikka.ApuLuokat.PalloRalli;
+import Logiikka.ApuLuokat.Pelialusta;
 import Logiikka.kasittelijat.LyontienKasittelija;
 import Logiikka.kasittelijat.NappienKasittelija;
 import Logiikka.TekoalynLogiikka;
@@ -40,6 +41,7 @@ public class Kayttoliittyma implements Runnable {
         JPanel yla = new JPanel(new GridLayout(2, 1));
         JLabel selostus = new JLabel("Tervetuloa Pingis-simulaattoriin.Ilmassa on suuren urheilujuhlan tuntua. Arvotaan aloittaja painamalla OK.");
         JLabel tulostaulu = new JLabel(tuomari.toString());
+        Pelialusta alusta = new Pelialusta(selostus,tulostaulu);
         yla.add(selostus);
         yla.add(tulostaulu);
         aloitusNaytto.add(yla);
@@ -47,7 +49,7 @@ public class Kayttoliittyma implements Runnable {
         NappienKasittelija nk = new NappienKasittelija();
         PalloRalli ralli = new PalloRalli(tuomari.getPelaaja1(), tuomari.getPelaaja2());
         ralli.palloLoppuu();
-        YhteisLogiikka logiikka = new YhteisLogiikka(selostus, tulostaulu, tuomari, nk, ralli);
+        YhteisLogiikka logiikka = new YhteisLogiikka(tuomari, nk, ralli,alusta);
                 NappaimistonKuuntelija nappaimistonKuuntelija = new NappaimistonKuuntelija(logiikka, nk);
         nk.getOK().getButton().addKeyListener(nappaimistonKuuntelija);
         NappienKuuntelija kuuntelija = new NappienKuuntelija(nk, logiikka);
@@ -63,19 +65,19 @@ public class Kayttoliittyma implements Runnable {
 
         if (!tuomari.getPelaaja1().onkoIhmisenOhjaama()) {
             LyontienKasittelija lk = new LyontienKasittelija();
-            logiikka.setTekoalynLogiikka1(new TekoalynLogiikka(selostus, tulostaulu, tuomari, nk, ralli, lk, tuomari.getPelaaja1()));
+            logiikka.setTekoalynLogiikka1(new TekoalynLogiikka(tuomari, nk, ralli,alusta, lk, tuomari.getPelaaja1()));
 
         } else {
-            PelaajanLogiikka pl = new PelaajanLogiikka(selostus, tulostaulu, tuomari, nk, ralli, tuomari.getPelaaja1());
+            PelaajanLogiikka pl = new PelaajanLogiikka(tuomari, nk, ralli, alusta,tuomari.getPelaaja1());
             kuuntelija.setPelaajanLogiikka(pl);
             nappaimistonKuuntelija.setPelaajanLogiikka(pl);
 
         }
         if (!tuomari.getPelaaja2().onkoIhmisenOhjaama()) {
             LyontienKasittelija lk = new LyontienKasittelija();
-            logiikka.setTekoalynLogiikka2(new TekoalynLogiikka(selostus, tulostaulu, tuomari, nk, ralli, lk, tuomari.getPelaaja2()));
+            logiikka.setTekoalynLogiikka2(new TekoalynLogiikka(tuomari, nk, ralli,alusta, lk, tuomari.getPelaaja2()));
         } else {
-            PelaajanLogiikka pl2 = new PelaajanLogiikka(selostus, tulostaulu, tuomari, nk, ralli, tuomari.getPelaaja1());
+            PelaajanLogiikka pl2 = new PelaajanLogiikka(tuomari, nk, ralli, alusta,tuomari.getPelaaja1());
             kuuntelija.setPelaajanLogiikka(pl2);
             nappaimistonKuuntelija.setPelaajanLogiikka(pl2);
         }

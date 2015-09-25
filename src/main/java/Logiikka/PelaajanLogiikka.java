@@ -4,6 +4,7 @@ package Logiikka;
 import Logiikka.ApuLuokat.Tuomari;
 import Logiikka.ApuLuokat.PalloRalli;
 import Logiikka.ApuLuokat.Pelaaja;
+import Logiikka.ApuLuokat.Pelialusta;
 import Logiikka.kasittelijat.NappienKasittelija;
 import Lyonnit.Alakierre;
 import Lyonnit.Blokki;
@@ -27,8 +28,8 @@ import javax.swing.JLabel;
  */
 public class PelaajanLogiikka extends Logiikka {
     private Pelaaja pelaaja;
-    public PelaajanLogiikka(JLabel selostus, JLabel tuloskentta, Tuomari tuomari, NappienKasittelija nk, PalloRalli ralli,Pelaaja pelaaja) {
-        super(selostus,tuloskentta,tuomari,nk,ralli);
+    public PelaajanLogiikka(Tuomari tuomari, NappienKasittelija nk, PalloRalli ralli,Pelialusta alusta,Pelaaja pelaaja) {
+        super(tuomari,nk,ralli,alusta);
         this.pelaaja = pelaaja;
     }
 

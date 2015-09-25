@@ -8,7 +8,7 @@ package Lyonnit;
 import java.util.ArrayList;
 
 /**
- *
+ * Puolustava lyönti, todella varma.
  * @author Aleksi
  */
 public class Alakierre implements Lyonti{

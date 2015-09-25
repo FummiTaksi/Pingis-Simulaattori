@@ -8,7 +8,7 @@ package Lyonnit;
 import java.util.ArrayList;
 
 /**
- *
+ * Spinni on hyökkäävä lyönti, josta vastustaja joutuu puolustuskannalle. Spinni on muita lyöntejä epävarmempi mutta sillä voi saada suoria pisteitä.
  * @author Aleksi
  */
 public class Spinni implements Lyonti {

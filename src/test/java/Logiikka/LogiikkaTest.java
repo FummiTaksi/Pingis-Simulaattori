@@ -7,7 +7,11 @@ package Logiikka;
 
 import Logiikka.ApuLuokat.PalloRalli;
 import Logiikka.ApuLuokat.Pelaaja;
+import Logiikka.ApuLuokat.Pelialusta;
+import Logiikka.ApuLuokat.Tuomari;
+import Logiikka.kasittelijat.NappienKasittelija;
 import Lyonnit.Lyonti;
+import javax.swing.JLabel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,22 +24,33 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class LogiikkaTest {
-    
+
+    private Logiikka logiikka;
+
     public LogiikkaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        Pelaaja ihminen1 = new Pelaaja("Ihminen", true);
+        Pelaaja tietokone2 = new Pelaaja("Tietokone", false);
+        PalloRalli ralli = new PalloRalli(ihminen1, tietokone2);
+        Tuomari tuomari = new Tuomari(ihminen1, tietokone2);
+        NappienKasittelija nk = new NappienKasittelija();
+        JLabel selostus = new JLabel("SELOSTUS");
+        JLabel tuloskentta = new JLabel("TULOSKENTTÄ");
+        Pelialusta alusta = new Pelialusta(selostus,tuloskentta);
+        this.logiikka = new Logiikka(tuomari,ralli,nk,alusta) {};
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -53,7 +68,6 @@ public class LogiikkaTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
     /**
      * Test of lyontiMeneePoytaan method, of class Logiikka.
      */
@@ -183,12 +197,4 @@ public class LogiikkaTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
-    public class LogiikkaImpl extends Logiikka {
-
-        public LogiikkaImpl() {
-            super(null, null, null, null, null);
-        }
-    }
-    
 }

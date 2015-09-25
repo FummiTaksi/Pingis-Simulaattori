@@ -8,7 +8,7 @@ package Lyonnit;
 import java.util.ArrayList;
 
 /**
- *
+ * Deffulla voi puolustaa vastustajan hyökkäävää Spinni-lyöntiä. Varmempi vaihtoehto kuin Blokki.
  * @author Aleksi
  */
 public class Deffu implements Lyonti {

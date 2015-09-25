@@ -8,7 +8,7 @@ package Lyonnit;
 import java.util.ArrayList;
 
 /**
- *
+ * Lyhyestä syötöstä vastustajasi voi vain palauttaa alakierteen, vaikeampi saada suoraa pistettä mutta vastustaja ei pääse hyökkäämään siitä.
  * @author Aleksi
  */
 public class LyhytSyotto implements Lyonti {

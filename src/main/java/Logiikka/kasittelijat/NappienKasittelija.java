@@ -20,13 +20,24 @@ import javax.swing.JButton;
  * and open the template in the editor.
  */
 /**
- *
+ * Hallitsee kaikkia pelin Nappi-olioita.
  * @author Aleksi
  */
 public class NappienKasittelija {
 
     private ArrayList<Nappi> napit;
     private ArrayList<Nappi> paallaOlevat;
+    private Nappi ok;
+    private Nappi lyhyt;
+    private Nappi pitka;
+    private Nappi alakierre;
+    private Nappi deffu;
+    private Nappi blokki;
+    private Nappi spinni;
+    
+    /**
+     * Konstruktorissa lisätään kaikki napit nappi-listaan. Päällä olevien nappien lista on aluksi tyhjä.
+     */
     public NappienKasittelija() {
         this.napit = new ArrayList();
         this.paallaOlevat = new ArrayList();
@@ -34,21 +45,30 @@ public class NappienKasittelija {
     }
     
     public void lisaaNappiListaan(Lyonti lyonti) {
-        Nappi lisattava = new Nappi(new JButton(lyonti.toString()),lyonti);
+        Nappi lisattava = new Nappi(lyonti);
         napit.add(lisattava);
     }
     
     public void lisaaKaikkiNapitListaan() {
-        napit.add(new Nappi (new JButton("[ENTER] OK"),null));
-        LyontienKasittelija vali = new LyontienKasittelija();
-        vali.lisaaKaikkiLyonnitListaan();
-        for (Lyonti lyonti : vali.getLyonnit()) {
-            lisaaNappiListaan(lyonti);
-        }
+        this.ok = new Nappi("[ENTER] OK");
+        napit.add(ok);
+        this.lyhyt = new Nappi(new LyhytSyotto());
+        napit.add(lyhyt);
+        this.pitka = new Nappi(new PitkaSyotto());
+        napit.add(pitka);
+        this.alakierre = new Nappi(new Alakierre());
+        napit.add(alakierre);
+        this.deffu = new Nappi(new Deffu());
+        napit.add(deffu);
+        this.blokki = new Nappi(new Blokki());
+        napit.add(blokki);
+        this.spinni = new Nappi(new Spinni());
+        napit.add(spinni);
+        
         
     }
     public Nappi getOK() {
-        return new Nappi(new JButton("[ENTER] OK"),null);
+        return ok;
     }
     
     public boolean onkoNappiPaalla(Nappi nappi) {
@@ -56,29 +76,36 @@ public class NappienKasittelija {
     }
     
     public Nappi getLyhytSyotto() {
-        return new Nappi(new JButton("[1] Lyhyt Syotto"),new LyhytSyotto());
+        return lyhyt;
     }
     
    
     public Nappi getPitkaSyotto() {
-        return new Nappi(new JButton("[2] Pitka Syotto"),new PitkaSyotto());
+        return pitka;
     }
     public Nappi getAlakierre() {
-        return new Nappi(new JButton("[3] Alakierre"),new Alakierre());
+        return alakierre;
     }
     public Nappi getDeffu() {
-        return new Nappi(new JButton("[4] Deffu"),new Deffu());
+        return deffu;
     }
     public Nappi getBlokki() {
-        return new Nappi(new JButton("[5] Blokki"),new Blokki());
+        return blokki;
     }
     public Nappi getSpinni() {
-        return new Nappi(new JButton("[6] Spinni"),new Spinni());
+        return spinni;
     }
     public ArrayList<Nappi> getNapit() {
         return napit;
     }
-
+    
+    public ArrayList<Nappi> getPaallaOlevat() {
+        return paallaOlevat;
+    }
+    /**
+     * Lisää parametrina olevan napin päällä-olevien nappien listaan.
+     * @param nappi 
+     */
     public void lisaaPaallaOlevaksi(Nappi nappi) {
         paallaOlevat.add(nappi);
     }
@@ -86,7 +113,9 @@ public class NappienKasittelija {
     public void tyhjennaPaallaOlevienLista() {
         paallaOlevat.clear();
     }
-
+    /**
+     * Laittaa kaikki päällä-olevien listalla olevat napit päälle. Muut napit pois päältä.
+     */
     public void kaikkiMuutNapitFalseksi() {
         for (Nappi nappi : napit) {
             if (paallaOlevat.contains(nappi)) {
@@ -97,7 +126,10 @@ public class NappienKasittelija {
             }
         }
     }
-    
+    /**
+     * Laittaa parametrina olevan napin päällä olevaksi. Kaikki muut napit pois päältä.
+     * @param nimi 
+     */
     public void kaikkiMuutNapitFalseksi(Nappi nimi) {
     
         for (Nappi nappi : napit) {

@@ -6,7 +6,7 @@
 package Logiikka.ApuLuokat;
 
 /**
- *
+ *  Pelaaja voi olla ihmisen tai tekoälyn ohjaama.
  * @author Aleksi
  */
 public class Pelaaja {

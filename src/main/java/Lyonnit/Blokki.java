@@ -8,7 +8,7 @@ package Lyonnit;
 import java.util.ArrayList;
 
 /**
- *
+ * Blokilla voi puolustaa vastustajan hyökkäävää Spinni-lyöntiä. Hieman epävarmempi kuin deffu mutta vastustajan on vaikeampi vastata siihen.
  * @author Aleksi
  */
 public class Blokki implements Lyonti {

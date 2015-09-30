@@ -48,7 +48,7 @@ public class LogiikkaTest {
         JLabel selostus = new JLabel("SELOSTUS");
         JLabel tuloskentta = new JLabel("TULOSKENTTÄ");
         Pelialusta alusta = new Pelialusta(selostus,tuloskentta);
-        this.logiikka = new Logiikka(tuomari,ralli,nk,alusta) {};
+//        this.logiikka = new Logiikka(tuomari,ralli,nk,alusta);
     }
 
     @After
@@ -58,43 +58,25 @@ public class LogiikkaTest {
     /**
      * Test of getPalloRalli method, of class Logiikka.
      */
-//    @Test
-//    public void testGetPalloRalli() {
-//        System.out.println("getPalloRalli");
-//        Logiikka instance = null;
-//        PalloRalli expResult = null;
-//        PalloRalli result = instance.getPalloRalli();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetPalloRalli() {
+        
+    }
     /**
      * Test of lyontiMeneePoytaan method, of class Logiikka.
      */
-//    @Test
-//    public void testLyontiMeneePoytaan() {
-//        System.out.println("lyontiMeneePoytaan");
-//        String uusiSelostus = "";
-//        Lyonti lyonti = null;
-//        Pelaaja pelaaja = null;
-//        Logiikka instance = null;
-//        instance.lyontiMeneePoytaan(uusiSelostus, lyonti, pelaaja);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testLyontiMeneePoytaan() {
+       
+    }
 //
 //    /**
 //     * Test of asetaNapit method, of class Logiikka.
 //     */
-//    @Test
-//    public void testAsetaNapit() {
-//        System.out.println("asetaNapit");
-//        Lyonti lyonti = null;
-//        Logiikka instance = null;
-//        instance.asetaNapit(lyonti);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testAsetaNapit() {
+       
+    }
 //
 //    /**
 //     * Test of asetaNapitLyhyestaSyotosta method, of class Logiikka.

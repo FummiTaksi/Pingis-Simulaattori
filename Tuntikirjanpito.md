@@ -13,3 +13,4 @@
 25.9 Uusi luokka logiikan ja käyttöliittymän eriyttämiseen: Pelialusta. Testit valmiina kaikille Apuluokat-pakkauksen luokille paitsi Pelialustalle. Ohjelman toiminta edelleen sama vaikka uusi luokka tehty, ja vanhoista luokista muutamia metodeja debugattu järkeväksi. Seuraavana edessä Logiikoiden testaaminen, joka on aikamoinen työmaa. 1h
 
 30.9 Yksi sekvenssikaavio tehty ( 0,5h ). Tämän viikon tavoitteena tehdä toinen sekmenssikaavio, tehdä parempi luokkakaavio, muuttaa ohjelman pakkaukset järkevämmiksi ja  kirjoittaa testejä niin paljon kuin ehtii. 
+2.10 En saanut pit- raporttia toimimaan. Tein toisen sekmenssikaavion. 1h

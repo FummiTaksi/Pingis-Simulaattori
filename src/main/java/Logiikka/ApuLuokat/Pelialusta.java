@@ -21,7 +21,13 @@ public class Pelialusta {
         this.selostus = selostus;
         this.tuloskentta = tuloskentta;
     }
+    public String getSelostus() {
+        return selostus.getText();
+    }
     
+    public String getTulosKentta() {
+        return tuloskentta.getText();
+    }
     public void muutaSelostusta(String uusiSelostus) {
         selostus.setText(uusiSelostus);
     }

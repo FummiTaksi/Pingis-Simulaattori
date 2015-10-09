@@ -6,6 +6,12 @@
 package Logiikka;
 
 import Logiikka.ApuLuokat.PalloRalli;
+import Logiikka.ApuLuokat.Pelaaja;
+import Logiikka.ApuLuokat.Pelialusta;
+import Logiikka.ApuLuokat.Tuomari;
+import Logiikka.kasittelijat.NappienKasittelija;
+import Lyonnit.LyhytSyotto;
+import javax.swing.JLabel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,98 +24,90 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class PelaajanLogiikkaTest {
-    
+     private PelaajanLogiikka logiikka;
     public PelaajanLogiikkaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        Pelaaja ihminen1 = new Pelaaja("Ihminen", true);
+        Pelaaja tietokone2 = new Pelaaja("Tietokone", false);
+        PalloRalli ralli = new PalloRalli(ihminen1, tietokone2);
+        Tuomari tuomari = new Tuomari(ihminen1, tietokone2);
+        NappienKasittelija nk = new NappienKasittelija();
+        JLabel selostus = new JLabel("SELOSTUS");
+        JLabel tuloskentta = new JLabel("TULOSKENTTÄ");
+        Pelialusta alusta = new Pelialusta(selostus, tuloskentta);
+        this.logiikka = new PelaajanLogiikka(tuomari,nk,ralli,alusta,ihminen1);
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of getPalloRalli method, of class PelaajanLogiikka.
-//     */
-//    @Test
-//    public void testGetPalloRalli() {
-//        System.out.println("getPalloRalli");
-//        PelaajanLogiikka instance = null;
-//        PalloRalli expResult = null;
-//        PalloRalli result = instance.getPalloRalli();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+     * Test of getPalloRalli method, of class PelaajanLogiikka. //
+     */
+    @Test
+    public void testGetPalloRalli() {
+        assertTrue(logiikka.getPalloRalli() != null);
+    }
 //
 //    /**
 //     * Test of asetaVastustajanLyonti method, of class PelaajanLogiikka.
 //     */
-//    @Test
-//    public void testAsetaVastustajanLyonti() {
-//        System.out.println("asetaVastustajanLyonti");
-//        PelaajanLogiikka instance = null;
-//        instance.asetaVastustajanLyonti();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testAsetaVastustajanLyonti() {
+       logiikka.asetaVastustajanLyonti();
+       assertTrue(logiikka.getPalloRalli().onkoPelaaja2Vuorossa());
+    }
 //
 //    /**
 //     * Test of lyhytSyotto method, of class PelaajanLogiikka.
 //     */
-//    @Test
-//    public void testLyhytSyotto() {
-//        System.out.println("lyhytSyotto");
-//        PelaajanLogiikka instance = null;
-//        instance.lyhytSyotto();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testLyhytSyotto() {
+      logiikka.lyhytSyotto();
+      assertTrue(logiikka.getPalloRalli().getPelaajan1Lyonti().equals(new LyhytSyotto()) || 
+                 !logiikka.getPalloRalli().palloKaynnissa());
+    }
 //
 //    /**
 //     * Test of pitkaSyotto method, of class PelaajanLogiikka.
 //     */
 //    @Test
 //    public void testPitkaSyotto() {
-//        System.out.println("pitkaSyotto");
-//        PelaajanLogiikka instance = null;
-//        instance.pitkaSyotto();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+//        logiikka.pitkaSyotto();
+//        assertTrue(logiikka.getAlusta().getSelostus().equals("Syöttösi meni pöytään") ||
+//                   logiikka.getAlusta().getSelostus().equals("Syötit yli"));
 //    }
-//
-//    /**
-//     * Test of blokki method, of class PelaajanLogiikka.
-//     */
+////
+////    /**
+////     * Test of blokki method, of class PelaajanLogiikka.
+////     */
 //    @Test
 //    public void testBlokki() {
-//        System.out.println("blokki");
-//        PelaajanLogiikka instance = null;
-//        instance.blokki();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+//        logiikka.blokki();
+//        assertTrue(logiikka.getAlusta().getSelostus().equals("Blokkasit vastustajan hyökkäyksen") || 
+//                   logiikka.getAlusta().getSelostus().equals("Vastustaja lataa armottoman pommin kulmasta läpi"));
 //    }
-//
-//    /**
-//     * Test of deffuBlokista method, of class PelaajanLogiikka.
-//     */
+////
+////    /**
+////     * Test of deffuBlokista method, of class PelaajanLogiikka.
+////     */
 //    @Test
 //    public void testDeffuBlokista() {
-//        System.out.println("deffuBlokista");
-//        PelaajanLogiikka instance = null;
-//        instance.deffuBlokista();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+//        logiikka.deffuBlokista();
+//        assertTrue(logiikka.getAlusta().getSelostus().equals("Deffasit pöytään") ||
+//                   logiikka.getAlusta().getSelostus().equals("Kompastuit jalkoihisi"));
 //    }
 //
 //    /**

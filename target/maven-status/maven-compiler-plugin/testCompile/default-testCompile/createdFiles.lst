@@ -4,7 +4,7 @@ Logiikka\ApuLuokat\NappiTest.class
 com\ComSuite.class
 com\mycompany\pingissimulaattorimaven\PingissimulaattorimavenSuite.class
 Logiikka\kasittelijat\KasittelijatSuite.class
-Logiikka\PelaajanLogiikkaTest.class
+Logiikka\LogiikkaSuite.class
 com\mycompany\pingissimulaattorimaven\Kayttoliittyma\KayttoliittymaSuite.class
 Logiikka\kasittelijat\NappienKasittelijaTest.class
 Lyonnit\DeffuTest.class

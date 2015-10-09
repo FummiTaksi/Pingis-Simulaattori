@@ -34,6 +34,10 @@ public abstract class Logiikka {
     public PalloRalli getPalloRalli() {
         return ralli;
     }
+    
+    public Pelialusta getAlusta() {
+        return alusta;
+    }
 
     public void lyontiMeneePoytaan(String uusiSelostus, Lyonti lyonti, Pelaaja pelaaja) {
         alusta.muutaSelostusta(uusiSelostus);

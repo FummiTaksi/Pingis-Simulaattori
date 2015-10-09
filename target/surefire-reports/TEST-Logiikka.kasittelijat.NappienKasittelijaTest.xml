@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="17" failures="0" name="Logiikka.kasittelijat.NappienKasittelijaTest" time="0.086" errors="0" skipped="0">
+<testsuite tests="17" failures="0" name="Logiikka.kasittelijat.NappienKasittelijaTest" time="0.051" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_31\jre\bin"/>
@@ -64,18 +64,18 @@
   <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testOnkoNappiPaallaPalauttaaTrue" time="0"/>
   <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetDeffu" time="0"/>
   <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetNapit" time="0"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetOK" time="0.001"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetLyhytSyotto" time="0.003"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testLisaaPaallaOlevaksi" time="0.005"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testLisaaNappiListaan" time="0.005"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testOnkoNappiPaallaPalauttaaFalse" time="0.003"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetAlakierre" time="0.004"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testTyhjennaPaallaOlevienLista" time="0.002"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testAsetaFalseksi" time="0.003"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetPitkaSyotto" time="0.002"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetBlokki" time="0.002"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testLisaaKaikkiNapitListaan" time="0.054"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testKaikkiMuutNapitFalseksiIlmanParametria" time="0"/>
-  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetSpinni" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetOK" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetLyhytSyotto" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testLisaaPaallaOlevaksi" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testLisaaNappiListaan" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testOnkoNappiPaallaPalauttaaFalse" time="0.001"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetAlakierre" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testTyhjennaPaallaOlevienLista" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testAsetaFalseksi" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetPitkaSyotto" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetBlokki" time="0"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testLisaaKaikkiNapitListaan" time="0.018"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testKaikkiMuutNapitFalseksiIlmanParametria" time="0.002"/>
+  <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testGetSpinni" time="0.028"/>
   <testcase classname="Logiikka.kasittelijat.NappienKasittelijaTest" name="testKaikkiMuutNapitFalseksiParametrilla" time="0"/>
 </testsuite>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="Lyonnit.AlakierreTest" time="0.021" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="Lyonnit.AlakierreTest" time="0.038" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_31\jre\bin"/>
@@ -61,10 +61,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="Lyonnit.AlakierreTest" name="testGetTodNakParametriton" time="0.001"/>
+  <testcase classname="Lyonnit.AlakierreTest" name="testGetTodNakParametriton" time="0"/>
   <testcase classname="Lyonnit.AlakierreTest" name="testToStringPalauttaaFalse" time="0"/>
   <testcase classname="Lyonnit.AlakierreTest" name="testEqualsPalauttaaTruen" time="0"/>
   <testcase classname="Lyonnit.AlakierreTest" name="testGetVastauksetToimii" time="0"/>
-  <testcase classname="Lyonnit.AlakierreTest" name="testEqualsPalauttaaFalsen" time="0"/>
+  <testcase classname="Lyonnit.AlakierreTest" name="testEqualsPalauttaaFalsen" time="0.012"/>
   <testcase classname="Lyonnit.AlakierreTest" name="testToStringPalauttaaTrue" time="0"/>
 </testsuite>

@@ -53,7 +53,7 @@ public class PelaajanLogiikka extends Logiikka {
     }
 
     public void deffuBlokista() {
-       lyoLyonti(new Deffu(0.7),"Deffasit pöytään.","Tyhmä yritys",pelaaja);
+       lyoLyonti(new Deffu(0.7),"Deffasit pöytään.","Kompastuit jalkoihisi",pelaaja);
     }
 
     public void deffuSpinnista() {

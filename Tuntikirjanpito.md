@@ -14,3 +14,4 @@
 
 30.9 Yksi sekvenssikaavio tehty ( 0,5h ). T‰m‰n viikon tavoitteena tehd‰ toinen sekmenssikaavio, tehd‰ parempi luokkakaavio, muuttaa ohjelman pakkaukset j‰rkev‰mmiksi ja  kirjoittaa testej‰ niin paljon kuin ehtii. 
 2.10 En saanut pit- raporttia toimimaan. Tein toisen sekmenssikaavion. 1h
+9.10 Pit raportti p‰ivitetty. Tein yhden sekmenssikaavion lis‰‰. Kirjoitin hieman testej‰ ja pohdin viimeisen viikon suunitelman. 2h

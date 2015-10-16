@@ -33,7 +33,13 @@ public class TekoalynLogiikka extends Logiikka {
         this.lk = lk;
         this.pelaaja = pelaaja;
     }
-
+    
+    public LyontienKasittelija getLyontienKasittelija() {
+        return lk;
+    }
+    /**
+     * Tekoäly aloittaa pisteen satunnaisesti valitulla syötöllä.
+     */
     public void tekoalySyottaa() {
         lk.lisaaLyontiListaan(new PitkaSyotto());
         lk.lisaaLyontiListaan(new LyhytSyotto());
@@ -45,11 +51,15 @@ public class TekoalynLogiikka extends Logiikka {
             tekoalySyottaaPitkanSyoton();
         }
     }
-    
+    /**
+     * Tekoäly vastaa käyttäjän lyhyeen syöttöön.
+     */
     public void tekoalyVastaaLyhyeenSyottoon() {
         tekoalyPelaaAlakierteenLyhyestaSyotosta();
     }
-    
+    /**
+     * Tekoäly vastaa käyttäjän pitkään syöttöön.
+     */
     public void tekoalyVastaaPitkaanSyottoon() {
         Lyonti palautus = lk.arvoLyonti(new PitkaSyotto().getVastaukset());
         if (palautus.equals(nk.getSpinni().getLyonti())) {
@@ -59,7 +69,9 @@ public class TekoalynLogiikka extends Logiikka {
             tekoalyPelaaAlakierteenPitkastaSyotosta();
         }
     }
-    
+    /**
+     * Tekoäly vastaa käyttäjän blokki-lyöntiin.
+     */
     public void tekoalyVastaaBlokkiin() {
         Lyonti palautus = lk.arvoLyonti(new Blokki().getVastaukset());
         if (palautus.equals(nk.getSpinni().getLyonti())) {
@@ -69,7 +81,9 @@ public class TekoalynLogiikka extends Logiikka {
             tekoalyPelaaDeffunBlokista();
         }
     }
-    
+    /**
+     * Tekoäly vastaa käyttäjän alakierre-lyöntiin.
+     */
     public void tekoalyVastaaAlakierteeseen() {
      Lyonti palautus = lk.arvoLyonti(new Alakierre().getVastaukset());
      if (palautus.equals(nk.getAlakierre().getLyonti())) {
@@ -79,7 +93,9 @@ public class TekoalynLogiikka extends Logiikka {
          tekoalyPelaaSpinninAlakierteesta();
      }
     }
-    
+    /**
+     * Tekoäly vastaa käyttäjän deffu-lyöntiin.
+     */
     public void tekoalyVastaaDeffuun() {
         Lyonti palautus = lk.arvoLyonti(new Alakierre().getVastaukset());
         if (palautus.equals(nk.getAlakierre().getLyonti())) {
@@ -89,6 +105,9 @@ public class TekoalynLogiikka extends Logiikka {
             tekoalyPelaaSpinninDeffusta();
         }
     }
+    /**
+     * Tekoäly vastaa käyttäjän spinni-lyöntiin.
+     */
     public void tekoalyVastaaSpinniin() {
         Lyonti palautus = lk.arvoLyonti(new Spinni().getVastaukset());
         if (palautus.equals(nk.getBlokki().getLyonti())) {
@@ -101,7 +120,10 @@ public class TekoalynLogiikka extends Logiikka {
             tekoalyPelaaVastaSpinnin();
         }
     }
-    
+    /**
+     * Tekoäly vastaa parametrina annettuun lyöntiin.
+     * @param lyonti 
+     */
     public void tekoalyVastaaLyontiin(Lyonti lyonti) {
         lk.tyhjennaLista();
         if (lyonti.equals(nk.getLyhytSyotto().getLyonti())) {

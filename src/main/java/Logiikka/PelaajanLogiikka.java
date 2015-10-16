@@ -36,7 +36,9 @@ public class PelaajanLogiikka extends Logiikka {
     public PalloRalli getPalloRalli() {
         return ralli;
     }
-    
+    /**
+     * Asettaa tekoälyn lyöntivuoroon.
+     */
     public void asetaVastustajanLyonti() {
         ralli.pelaajanVuoro(tuomari.getVastustaja(pelaaja));
     }

@@ -31,6 +31,12 @@ public abstract class Logiikka {
         this.alusta = alusta;
     }
 
+    public NappienKasittelija getNappienKasittelija() {
+        return nk;
+    }
+    public Tuomari getTuomari() {
+        return tuomari;
+    }
     public PalloRalli getPalloRalli() {
         return ralli;
     }

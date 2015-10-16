@@ -5,7 +5,9 @@ com\ComSuite.class
 com\mycompany\pingissimulaattorimaven\PingissimulaattorimavenSuite.class
 Logiikka\kasittelijat\KasittelijatSuite.class
 Logiikka\LogiikkaSuite.class
+Logiikka\PelaajanLogiikkaTest.class
 com\mycompany\pingissimulaattorimaven\Kayttoliittyma\KayttoliittymaSuite.class
+Logiikka\ApuLuokat\PelialustaTest.class
 Logiikka\kasittelijat\NappienKasittelijaTest.class
 Lyonnit\DeffuTest.class
 Logiikka\ApuLuokat\TuomariTest.class
@@ -18,6 +20,7 @@ KayttoliittymaTest.class
 Lyonnit\LyonnitSuite.class
 RootSuite.class
 Logiikka\TekoalynLogiikkaTest.class
+Logiikka\LogiikkaTest.class
 Logiikka\ApuLuokat\ApuLuokatSuite.class
 Lyonnit\AlakierreTest.class
 com\mycompany\MycompanySuite.class

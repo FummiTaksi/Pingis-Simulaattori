@@ -9,8 +9,15 @@ import Logiikka.ApuLuokat.PalloRalli;
 import Logiikka.ApuLuokat.Pelaaja;
 import Logiikka.ApuLuokat.Pelialusta;
 import Logiikka.ApuLuokat.Tuomari;
+import Logiikka.kasittelijat.LyontienKasittelija;
 import Logiikka.kasittelijat.NappienKasittelija;
+import Lyonnit.Alakierre;
+import Lyonnit.Blokki;
 import Lyonnit.LyhytSyotto;
+import Lyonnit.Lyonti;
+import Lyonnit.PitkaSyotto;
+import Lyonnit.Spinni;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,7 +31,9 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class PelaajanLogiikkaTest {
-     private PelaajanLogiikka logiikka;
+
+    private PelaajanLogiikka logiikka;
+
     public PelaajanLogiikkaTest() {
     }
 
@@ -46,7 +55,7 @@ public class PelaajanLogiikkaTest {
         JLabel selostus = new JLabel("SELOSTUS");
         JLabel tuloskentta = new JLabel("TULOSKENTTÄ");
         Pelialusta alusta = new Pelialusta(selostus, tuloskentta);
-        this.logiikka = new PelaajanLogiikka(tuomari,nk,ralli,alusta,ihminen1);
+        this.logiikka = new PelaajanLogiikka(tuomari, nk, ralli, alusta, ihminen1);
     }
 
     @After
@@ -64,99 +73,118 @@ public class PelaajanLogiikkaTest {
 //    /**
 //     * Test of asetaVastustajanLyonti method, of class PelaajanLogiikka.
 //     */
+
     @Test
     public void testAsetaVastustajanLyonti() {
-       logiikka.asetaVastustajanLyonti();
-       assertTrue(logiikka.getPalloRalli().onkoPelaaja2Vuorossa());
+        logiikka.asetaVastustajanLyonti();
+        assertTrue(logiikka.getPalloRalli().onkoPelaaja2Vuorossa());
     }
 //
 //    /**
 //     * Test of lyhytSyotto method, of class PelaajanLogiikka.
 //     */
+
     @Test
     public void testLyhytSyotto() {
-      logiikka.lyhytSyotto();
-      assertTrue(logiikka.getPalloRalli().getPelaajan1Lyonti().equals(new LyhytSyotto()) || 
-                 !logiikka.getPalloRalli().palloKaynnissa());
+        logiikka.lyhytSyotto();
+        assertTrue(logiikka.getPalloRalli().getPelaajan1Lyonti() != null
+                || !logiikka.getPalloRalli().palloKaynnissa());
     }
 //
 //    /**
 //     * Test of pitkaSyotto method, of class PelaajanLogiikka.
 //     */
-//    @Test
-//    public void testPitkaSyotto() {
-//        logiikka.pitkaSyotto();
-//        assertTrue(logiikka.getAlusta().getSelostus().equals("Syöttösi meni pöytään") ||
-//                   logiikka.getAlusta().getSelostus().equals("Syötit yli"));
-//    }
+
+    @Test
+    public void testPitkaSyotto() {
+
+        logiikka.pitkaSyotto();
+        assertTrue(logiikka.getPalloRalli().getPelaajan1Lyonti() != null
+                || !logiikka.getPalloRalli().palloKaynnissa());
+    }
 ////
 ////    /**
 ////     * Test of blokki method, of class PelaajanLogiikka.
 ////     */
-//    @Test
-//    public void testBlokki() {
-//        logiikka.blokki();
-//        assertTrue(logiikka.getAlusta().getSelostus().equals("Blokkasit vastustajan hyökkäyksen") || 
-//                   logiikka.getAlusta().getSelostus().equals("Vastustaja lataa armottoman pommin kulmasta läpi"));
-//    }
+
+    @Test
+    public void testBlokki() {
+        logiikka.blokki();
+        assertTrue(logiikka.getPalloRalli().getPelaajan1Lyonti() != null
+                || !logiikka.getPalloRalli().palloKaynnissa());
+    }
 ////
 ////    /**
 ////     * Test of deffuBlokista method, of class PelaajanLogiikka.
 ////     */
-//    @Test
-//    public void testDeffuBlokista() {
-//        logiikka.deffuBlokista();
-//        assertTrue(logiikka.getAlusta().getSelostus().equals("Deffasit pöytään") ||
-//                   logiikka.getAlusta().getSelostus().equals("Kompastuit jalkoihisi"));
-//    }
+
+    @Test
+    public void testDeffuBlokista() {
+        logiikka.deffuBlokista();
+        assertTrue(logiikka.getAlusta().getSelostus().equals("Deffasit pöytään.")
+                || logiikka.getAlusta().getSelostus().equals("Kompastuit jalkoihisi"));
+    }
 //
 //    /**
 //     * Test of deffuSpinnista method, of class PelaajanLogiikka.
 //     */
-//    @Test
-//    public void testDeffuSpinnista() {
-//        System.out.println("deffuSpinnista");
-//        PelaajanLogiikka instance = null;
-//        instance.deffuSpinnista();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+
+    @Test
+    public void testDeffuSpinnista() {
+        logiikka.deffuSpinnista();
+        assertTrue(logiikka.getAlusta().getSelostus().equals("Deffasit vastustajan lämärin.")
+                || logiikka.getAlusta().getSelostus().equals("Vastustaja pommitti läpi!!"));
+    }
 //
 //    /**
 //     * Test of deffu method, of class PelaajanLogiikka.
 //     */
-//    @Test
-//    public void testDeffu() {
-//        System.out.println("deffu");
-//        PelaajanLogiikka instance = null;
-//        instance.deffu();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+
+    @Test
+    public void testDeffu() {
+        ArrayList<Lyonti> lyonnit = new ArrayList();
+        lyonnit.add(new Spinni());
+        lyonnit.add(new Blokki());
+        for (Lyonti lyonti : lyonnit) {
+            logiikka.getPalloRalli().palloAlkaa();
+            logiikka.getPalloRalli().setPelaajan2Lyonti(lyonti);
+            logiikka.getPalloRalli().pelaajan1Vuoro();
+            logiikka.deffu();
+            assertTrue(logiikka.getPalloRalli().getPelaajan1Lyonti() != null
+                    || !logiikka.getPalloRalli().palloKaynnissa());
+        }
+
+    }
 //
 //    /**
 //     * Test of alakierre method, of class PelaajanLogiikka.
 //     */
-//    @Test
-//    public void testAlakierre() {
-//        System.out.println("alakierre");
-//        PelaajanLogiikka instance = null;
-//        instance.alakierre();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+
+    @Test
+    public void testAlakierre() {
+        ArrayList<Lyonti> lyonnit = new ArrayList();
+        lyonnit.add(new LyhytSyotto());
+        lyonnit.add(new Alakierre());
+        for (Lyonti lyonti : lyonnit) {
+            logiikka.getPalloRalli().palloAlkaa();
+            logiikka.getPalloRalli().setPelaajan2Lyonti(lyonti);
+            logiikka.getPalloRalli().pelaajan1Vuoro();
+            logiikka.alakierre();
+            assertTrue(logiikka.getPalloRalli().getPelaajan1Lyonti() != null
+                    || !logiikka.getPalloRalli().palloKaynnissa());
+        }
+    }
 //
 //    /**
 //     * Test of spinniPitkastaSyotosta method, of class PelaajanLogiikka.
 //     */
-//    @Test
-//    public void testSpinniPitkastaSyotosta() {
-//        System.out.println("spinniPitkastaSyotosta");
-//        PelaajanLogiikka instance = null;
-//        instance.spinniPitkastaSyotosta();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+
+    @Test
+    public void testSpinniPitkastaSyotosta() {
+        logiikka.spinniPitkastaSyotosta();
+        assertTrue(logiikka.getAlusta().getSelostus().equals("Löit spinnin pöytään vastustajan syötöstä")
+                || logiikka.getAlusta().getSelostus().equals("Et osunut palloon!"));
+    }
 //
 //    /**
 //     * Test of spinniDeffusta method, of class PelaajanLogiikka.

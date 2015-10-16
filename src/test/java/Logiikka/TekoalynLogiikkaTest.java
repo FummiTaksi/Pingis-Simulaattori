@@ -5,7 +5,17 @@
  */
 package Logiikka;
 
+import Logiikka.ApuLuokat.PalloRalli;
+import Logiikka.ApuLuokat.Pelaaja;
+import Logiikka.ApuLuokat.Pelialusta;
+import Logiikka.ApuLuokat.Tuomari;
+import Logiikka.kasittelijat.LyontienKasittelija;
+import Logiikka.kasittelijat.NappienKasittelija;
+import Lyonnit.Blokki;
+import Lyonnit.LyhytSyotto;
 import Lyonnit.Lyonti;
+import Lyonnit.PitkaSyotto;
+import javax.swing.JLabel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,22 +28,34 @@ import static org.junit.Assert.*;
  * @author Aleksi
  */
 public class TekoalynLogiikkaTest {
-    
+
+    private TekoalynLogiikka logiikka;
+
     public TekoalynLogiikkaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        Pelaaja ihminen1 = new Pelaaja("Ihminen", true);
+        Pelaaja tietokone2 = new Pelaaja("Tietokone", false);
+        PalloRalli ralli = new PalloRalli(ihminen1, tietokone2);
+        Tuomari tuomari = new Tuomari(ihminen1, tietokone2);
+        NappienKasittelija nk = new NappienKasittelija();
+        JLabel selostus = new JLabel("SELOSTUS");
+        JLabel tuloskentta = new JLabel("TULOSKENTTÄ");
+        Pelialusta alusta = new Pelialusta(selostus, tuloskentta);
+        LyontienKasittelija lk = new LyontienKasittelija();
+        this.logiikka = new TekoalynLogiikka(tuomari, nk, ralli, alusta, lk, tietokone2);
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -41,14 +63,35 @@ public class TekoalynLogiikkaTest {
     /**
      * Test of tekoalySyottaa method, of class TekoalynLogiikka.
      */
-//    @Test
-//    public void testTekoalySyottaa() {
-//        System.out.println("tekoalySyottaa");
-//        TekoalynLogiikka instance = null;
-//        instance.tekoalySyottaa();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testTekoalySyottaaPitkanSyoton() {
+        logiikka.tekoalySyottaaPitkanSyoton();
+        assertTrue(logiikka.getAlusta().getSelostus().equals("Vastustajasi syötti pitkän syötön")
+                || logiikka.getAlusta().getSelostus().equals("Vastustajasi syöttää yli."));
+    }
+
+    @Test
+    public void testTekoalySyottaaLyhyenSyoton() {
+        logiikka.tekoalySyottaaLyhyenSyoton();
+        assertTrue(logiikka.getAlusta().getSelostus().equals("Vastustajasi syötti lyhyen syötön.")
+                || logiikka.getAlusta().getSelostus().equals("Vastustajasi syöttää verkkoon"));
+    }
+
+    @Test
+    public void testTekoalySyottaa() {
+        logiikka.tekoalySyottaa();
+        assertTrue(logiikka.getPalloRalli().getPelaajan2Lyonti() != null
+                && (logiikka.getPalloRalli().getPelaajan2Lyonti().equals(new PitkaSyotto())
+                || logiikka.getPalloRalli().getPelaajan2Lyonti().equals(new LyhytSyotto()))
+                || logiikka.getTuomari().palautaJohtaja().equals(logiikka.getTuomari().getPelaaja1()));
+    }
+
+    @Test
+    public void testTekoalyBlokkaa() {
+        logiikka.tekoalyBlokkaa();
+        assertTrue(logiikka.getAlusta().getSelostus().equals("Vastustaja blokkasi kiskaisusi!")
+                || logiikka.getAlusta().getSelostus().equals("Vastustajallasi ei ole mahdollisuuttakaan palauttaa pommiasi!"));
+    }
 //
 //    /**
 //     * Test of tekoalyVastaaLyhyeenSyottoon method, of class TekoalynLogiikka.
@@ -138,38 +181,15 @@ public class TekoalynLogiikkaTest {
 //    /**
 //     * Test of tekoalySyottaaLyhyenSyoton method, of class TekoalynLogiikka.
 //     */
-//    @Test
-//    public void testTekoalySyottaaLyhyenSyoton() {
-//        System.out.println("tekoalySyottaaLyhyenSyoton");
-//        TekoalynLogiikka instance = null;
-//        instance.tekoalySyottaaLyhyenSyoton();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+
 //
 //    /**
 //     * Test of tekoalySyottaaPitkanSyoton method, of class TekoalynLogiikka.
 //     */
-//    @Test
-//    public void testTekoalySyottaaPitkanSyoton() {
-//        System.out.println("tekoalySyottaaPitkanSyoton");
-//        TekoalynLogiikka instance = null;
-//        instance.tekoalySyottaaPitkanSyoton();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
 //
 //    /**
 //     * Test of tekoalyBlokkaa method, of class TekoalynLogiikka.
 //     */
-//    @Test
-//    public void testTekoalyBlokkaa() {
-//        System.out.println("tekoalyBlokkaa");
-//        TekoalynLogiikka instance = null;
-//        instance.tekoalyBlokkaa();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
 //
 //    /**
 //     * Test of tekoalyPelaaAlakierteenPitkastaSyotosta method, of class TekoalynLogiikka.

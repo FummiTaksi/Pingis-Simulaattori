@@ -38,7 +38,7 @@
                         <param>Logiikka.ApuLuokat.*</param>
                         <param>Logiikka.kasittelijat.*</param>
                         <param>Lyonnit.*</param>
-                        <param>Logiikka.PelaajanLogiikka></param>
+                        <param>Logiikka.*</param>
                         
                     </targetClasses>
                     <targetTests>
@@ -46,10 +46,32 @@
                        
                     </targetTests>
                 </configuration>
+                
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>Pingis-Simulaattori.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin> 
         </plugins>
+        
     </build>
     
-    
+  
 
 </project>

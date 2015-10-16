@@ -28,10 +28,18 @@ public class Pelialusta {
     public String getTulosKentta() {
         return tuloskentta.getText();
     }
+    
+    /**
+     * Laittaa selostus-JLabeliin parametrin tekstin.
+     * @param uusiSelostus 
+     */
     public void muutaSelostusta(String uusiSelostus) {
         selostus.setText(uusiSelostus);
     }
-    
+    /**
+     * Laittaa tuloskenttä-JLabeliin parametrin tekstin.
+     * @param uusiTulos 
+     */
     public void muutaTulosKenttaa(String uusiTulos) {
         tuloskentta.setText(uusiTulos);
     }

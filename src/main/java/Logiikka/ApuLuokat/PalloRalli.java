@@ -75,6 +75,16 @@ public class PalloRalli {
             this.onkoPelaajan1Lyonti = false;
         }
     }
+    
+    public void pelaajan1Vuoro() {
+        onkoPelaajan1Lyonti = true;
+        onkoPelaajan2Lyonti = false;
+    }
+    
+    public void pelaajan2Vuoro() {
+        onkoPelaajan2Lyonti = true;
+        onkoPelaajan1Lyonti = false;
+    }
     /**
      * Asettaa pallon loppuneeksi.
      */
@@ -99,6 +109,14 @@ public class PalloRalli {
         if (pelaaja.equals(pelaaja2)) {
             pelaajan2Lyonti = lyonti;
         }
+    }
+    
+    public void setPelaajan2Lyonti(Lyonti lyonti) {
+        pelaajan2Lyonti = lyonti;
+    }
+    
+    public void setPelaajan1Lyonti(Lyonti lyonti) {
+        pelaajan1Lyonti = lyonti;
     }
     
     public Lyonti getPelaajan2Lyonti() {
